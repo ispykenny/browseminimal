@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Inner from './Inner';
 import fetcher from '../Utils/fetcher';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Cards from './Cards';
 
 const Collection = () => {
   const [listing, setListing] = useState();
@@ -20,27 +20,7 @@ const Collection = () => {
       if(listing.status === 200) {
         let root = listing.data.items;
         console.log(root)
-        return (
-          <div className="collection">
-            { root.map((item, index) => (
-              <div key={index} className="collection__item">
-                  <a href="" className="collection__imagelink">
-                    <div className="collection__image">
-                      <img src={`https:${item.fields.featuredImage.fields.file.url}`}/>
-                    </div> 
-                  </a>
-                <div className="collection__info">
-                  <div className="collection__title">
-                    <h3>{item.fields.title}</h3>
-                  </div>
-                  <div className="collection__summary">
-                    {documentToReactComponents(item.fields.productInfo)}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        )
+        return <Cards root={root}/>
       } else {
         return <div>goodbye</div>
       }

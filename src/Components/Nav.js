@@ -12,25 +12,22 @@ const Nav = () => {
               <strong>BM.</strong>
             </div>
           </a>
-          <button className="menu-trigger">
+          {/* <button className="menu-trigger">
             <span className="sr-only">Menu</span>
             <div className="menu-trigger__span">
               <span></span>
               <span></span>
               <span></span>
             </div>
-          </button>
+          </button> */}
         </div>
-        <div className="nav-section__item main-nav-parent">
+        {/* <div className="nav-section__item main-nav-parent">
           <nav className="main-nav">
             <ul>
-              <li><a className="<?php echo $about;?>" href="<?php echo site_url('/about');?>">Reviews</a></li>
-              <li><a className="<?php echo $about;?>" href="<?php echo site_url('/about');?>">Hers</a></li>
-              <li><a className="<?php echo $articles;?>" href="<?php echo site_url('/articles');?>">His</a></li>
-              <li><a className="<?php echo $work;?>" href="<?php echo site_url('/work');?>">Contact</a></li>
+              <li><a href="">Link</a></li>
             </ul>
           </nav>
-        </div>
+        </div> */}
       </Inner>
     </header>
   )
