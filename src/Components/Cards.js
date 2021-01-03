@@ -1,5 +1,6 @@
 import React from 'react';
 // import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import LazyLoad from 'react-lazy-load';
 
 const Cards = ({root}) => {
   return (
@@ -13,7 +14,9 @@ const Cards = ({root}) => {
               rel="noreferrer"
             >
               <div className="collection__image">
-                <img src={`https:${item.fields.featuredImage.fields.file.url}`} alt={`product preview of ${item.fields.title}`}/>
+                <LazyLoad offsetTop={200}>
+                  <img src={`https:${item.fields.featuredImage.fields.file.url}`} alt={`product preview of ${item.fields.title}`}/>
+                </LazyLoad>
               </div> 
             </a>
           <div className="collection__info">
