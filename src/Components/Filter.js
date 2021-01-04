@@ -1,5 +1,4 @@
 import React from 'react';
-import Inner from './Inner';
 
 
 const Filter = ({listing, setFilter, filter}) => {
@@ -12,7 +11,7 @@ const Filter = ({listing, setFilter, filter}) => {
     if(listing) {
       const categories = [];
       const root = listing.data.items;
-      root.map((options) => {
+      root.forEach((options) => {
         if(!categories.includes(options.fields.category)) {
           categories.push(options.fields.category)
         }
@@ -39,6 +38,7 @@ const Filter = ({listing, setFilter, filter}) => {
 
   return (
     <div className="select-parent">
+      {console.log('why did I rerender?')}
       <Select handler={doThing} className='select-master'/>
     </div>
   )
