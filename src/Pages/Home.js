@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Collection from '../Components/Collection';
 import Inner from '../Components/Inner';
 
+
 const Home = () => {
+
   return (
     <> 
       <Inner className="center">
