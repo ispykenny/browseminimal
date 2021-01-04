@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import Inner from './Inner';
-import fetcher from '../Utils/fetcher';
 import Cards from './Cards';
+import Filter from './Filter';
+import fetcher from '../Utils/fetcher';
 
 const Collection = () => {
   const [listing, setListing] = useState();
+  const [filter, setFilter] = useState('all');
 
   useEffect( () => {
     const collectListings = async () => {
@@ -15,12 +17,22 @@ const Collection = () => {
     
   },[])
 
-  const Collection = () => {
+  const Listing = () => {
     if(listing) {
       if(listing.status === 200) {
+        console.log('here in', filter)
         let root = listing.data.items;
-        console.log(root)
-        return <Cards root={root}/>
+        if(filter.toLowerCase() === "all") {
+          return <Cards root={root}/>
+        } else {
+          let filteredRoot = []
+          root.find((item) => {
+            if(item.fields.category === filter) {
+              filteredRoot.push(item)
+            }
+          })
+          return <Cards root={filteredRoot}/>
+        }
       } else {
         return <div>goodbye</div>
       }
@@ -32,8 +44,19 @@ const Collection = () => {
   return (
     <>
       <Inner>
-        <Collection/>
-        
+        <Filter
+          listing={listing}
+          setFilter={setFilter}
+          filter={filter}
+          />
+          <div>
+            {filter.toLowerCase() === "all" ? (
+              <p>View All Products</p>
+            ) : (
+              <p>View Products in <strong>{filter}</strong></p>
+            )} 
+          </div>
+        <Listing/>
       </Inner>
     </>
   )
