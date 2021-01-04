@@ -26,7 +26,7 @@ const Collection = () => {
           return <Cards root={root}/>
         } else {
           let filteredRoot = []
-          root.find((item) => {
+          root.forEach((item) => {
             if(item.fields.category === filter) {
               filteredRoot.push(item)
             }
