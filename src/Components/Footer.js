@@ -7,8 +7,11 @@ const Footer = () => {
   return (
     <div>
       <Inner className="center">
-        <div className="default-block" style={{marginTop: 30}}>
-          Browse Minimal {year}
+        <div style={{marginTop: 30, marginBottom: 50}}>
+          <div className="default-block">
+            Browse Minimal {year}
+          </div>
+          <small>Operated by <a class="footer-link" href="https://twitter.com/ispykenny" target="_blank" rel="noreferrer">Kenny Krosky</a></small>
         </div>
       </Inner>
     </div>

@@ -1,47 +1,41 @@
-import React from 'react';
+import React, {memo} from 'react';
+import {Select, MenuItem} from '@material-ui/core/';
 
 
-const Filter = ({listing, setFilter, filter}) => {
+const Filter = memo(({filter, listing, changeFilter}) => {
 
-  const doThing = event => {
-    setFilter(event.target.value)
-  }
 
-  const Select = ({handler, className}) => {
+  const SelectParent = ({changeFilter}) => {
     if(listing) {
-      const categories = [];
-      const root = listing.data.items;
-      root.forEach((options) => {
-        if(!categories.includes(options.fields.category)) {
-          categories.push(options.fields.category)
+      const cleanArray = [];
+      listing.data.items.forEach((item) => {
+        if(!cleanArray.includes(item.fields.category)) {
+          cleanArray.push(item.fields.category)
         }
       })
       return (
-        <select 
-          onMouseUp={handler} 
-          className={className}
-        >
-          <option>All</option>
-          {categories.map((option, index) => (
-            <option key={index}>{option}</option>
-          ))}
-        </select>
+        <Select className="filter" labelWidth={1300} variant="standard" defaultValue="All" autoWidth={false} onChange={(event) => changeFilter(event)}>
+          <MenuItem value="All">All</MenuItem>
+          {
+            cleanArray.map((category, index) => (
+              <MenuItem key={index} value={category}>{category}</MenuItem>
+            ))
+          }
+          
+        </Select>
       )
     } else {
-      return (
-        <select>
-          <option>Loading...</option>
-        </select>
-      )
+      return <div>loading...</div>
     }
   }
 
+
   return (
     <div className="select-parent">
-      {console.log('why did I rerender?')}
-      <Select handler={doThing} className='select-master'/>
+      <SelectParent changeFilter={changeFilter}/>
+      
     </div>
   )
-}
+})
 
 export default Filter;
