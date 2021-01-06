@@ -1,0 +1,42 @@
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.MuiSelect-select {
+  min-width: 300px !important;
+  background: white !important;
+  border-bottom: none !important;
+}
+
+.MuiList-root {
+  padding: 10px !important;
+}
+
+.MuiSelect-select.MuiSelect-select {
+  padding-left: 10px !important;
+}
+
+.MuiInput-underline::after {
+  display: none !important;
+}
+
+.MuiInputBase-root {
+  &:before {
+    display: none !important;
+  }
+  
+  &:focus, &:active {
+    &:before {
+      display: none !important;
+    } 
+  }
+}
+@media(min-width: $bp-md) {
+  .filter {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

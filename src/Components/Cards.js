@@ -1,5 +1,4 @@
 import React from 'react';
-// import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import LazyLoad from 'react-lazy-load';
 
 const Cards = ({root}) => {
