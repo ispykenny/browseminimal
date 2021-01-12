@@ -8,18 +8,24 @@ const client = contentful.createClient({
 });
 
 
-const fetchData = (type) => {
+const fetchData = async (type) => {
   if(type == "all") {
     return client
-    .getEntries("OqoFlWFlY6DkBnj3")
+    .getEntries({
+      'content_type': 'title'
+    })
     .then(entry => entry)
     .catch(err => console.log(err));
-  } else {
+  } else if(type === "articles") {
     return client
-    .getEntry(type)
+    .getEntries({
+      'content_type': 'article'
+    })
     .then(entry => entry)
     .catch(err => console.log(err));
   }
+  
+  
 }
 
 const handler = async (event) => {
