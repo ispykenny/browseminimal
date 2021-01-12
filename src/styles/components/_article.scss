@@ -1,0 +1,52 @@
+.article {
+  padding-bottom: 8em;
+
+  img {
+    width: 100%;
+  }
+}
+
+.article__item {
+  display: inline-block;
+
+  &:last-of-type hr {
+    display: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  p {
+    font-size: 1.2em;
+    font-weight: 300;
+  }
+
+  hr {
+    margin: 4em 0em;
+    border: none;
+    height: 2px;
+    background: #aaa;
+  }
+
+  button {
+    background: #222;
+    color: white;
+    -webkit-appearance: none;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    border-radius: 0px;
+    font-size: 1em;
+    padding: 1em 3em;
+    display: inline-block;
+    margin-top: 1em;
+    border-radius: 6px;
+    outline: none;
+
+    &:hover {
+      background: black;
+    }
+  }
+}

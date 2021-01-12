@@ -33,7 +33,6 @@ const Filter = memo(({filter, listing, changeFilter}) => {
   return (
     <div className="select-parent">
       <SelectParent changeFilter={changeFilter}/>
-      
     </div>
   )
 })

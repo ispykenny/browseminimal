@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Inner from './Inner';
 
 const Nav = () => {
@@ -6,12 +7,12 @@ const Nav = () => {
     <header>
       <Inner className='nav-section'>
         <div className="nav-section__item">
-          <a href="./" id="site-title">
+          <Link to="/" id="site-title">
             <span className="sr-only">Home Page of Browse Mininal</span>
             <div>
               <strong>BM.</strong>
             </div>
-          </a>
+          </Link>
           {/* <button className="menu-trigger">
             <span className="sr-only">Menu</span>
             <div className="menu-trigger__span">
@@ -21,13 +22,13 @@ const Nav = () => {
             </div>
           </button> */}
         </div>
-        {/* <div className="nav-section__item main-nav-parent">
+        <div className="nav-section__item main-nav-parent">
           <nav className="main-nav">
             <ul>
-              <li><a href="">Link</a></li>
+              <li><Link to="/articles">Articles</Link></li>
             </ul>
           </nav>
-        </div> */}
+        </div>
       </Inner>
     </header>
   )

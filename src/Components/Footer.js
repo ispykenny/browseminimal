@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="default-block">
             Browse Minimal {year}
           </div>
-          <small>Operated by <a class="footer-link" href="https://twitter.com/ispykenny" target="_blank" rel="noreferrer">Kenny Krosky</a></small>
+          <small>Operated by <a className="footer-link" href="https://twitter.com/ispykenny" target="_blank" rel="noreferrer">Kenny Krosky</a></small>
         </div>
       </Inner>
     </div>

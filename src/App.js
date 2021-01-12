@@ -1,10 +1,26 @@
+import {useState, useEffect} from 'react'
 import Nav from "./Components/Nav";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Home from './Pages/Home';
 import Footer from "./Components/Footer";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import Article from "./Pages/Article";
+import Blogs from "./Pages/Blog";
+import fetcher from './Utils/fetcher'
 
 function App() {
+  const [articles, setArticles] = useState();
+  const [mounted, setMount] = useState(false);
+
+  useEffect( () => {
+    const collectListings = async () => {
+      let theData = await fetcher('/.netlify/functions/endpoint?type=articles');
+      setArticles(theData);
+      setMount(true)
+    }
+    collectListings();
+  },[])
+
   return (
     <div className="App">
       <HelmetProvider>
@@ -19,9 +35,11 @@ function App() {
         <Nav/>
         <div className="shimmy"></div>
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <Home/>
             </Route>
+            <Route exact path="/articles/" render={(props) => <Blogs setArticles={setArticles} articles={articles} mounted={mounted}/>}/>
+            <Route path="/articles/:slug" render={(props) => <Article article={props} read={articles} mounted={mounted}/>}/>
           </Switch>
         <Footer/>
       </Router>
