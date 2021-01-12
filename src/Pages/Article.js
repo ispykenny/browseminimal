@@ -32,8 +32,7 @@ const Article = (props) => {
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
         return (
           <div>
-            <img src={`http:${node.data.target.fields.file.url}`} />
-            {console.log('weee', node, 'weee')}
+            <img src={`http:${node.data.target.fields.file.url}`} alt='Preview of the product' />
           </div>
         )
       }
