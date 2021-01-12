@@ -11,6 +11,7 @@ import fetcher from './Utils/fetcher'
 function App() {
   const [articles, setArticles] = useState();
   const [mounted, setMount] = useState(false);
+  const [navShowing, setNavShowing] = useState(false);
 
   useEffect( () => {
     const collectListings = async () => {
@@ -32,14 +33,14 @@ function App() {
       </Helmet>
       </HelmetProvider>
       <Router>
-        <Nav/>
+        <Nav navShowing={navShowing} setNavShowing={setNavShowing}/>
         <div className="shimmy"></div>
           <Switch>
             <Route exact path="/">
               <Home/>
             </Route>
-            <Route exact path="/articles/" render={(props) => <Blogs setArticles={setArticles} articles={articles} mounted={mounted}/>}/>
-            <Route path="/articles/:slug" render={(props) => <Article article={props} read={articles} mounted={mounted}/>}/>
+            <Route exact path="/articles/" render={(props) => <Blogs setArticles={setArticles} articles={articles} mounted={mounted} setNavShowing={setNavShowing}/>}/>
+            <Route path="/articles/:slug" render={(props) => <Article article={props} read={articles} mounted={mounted} setNavShowing={setNavShowing}/>}/>
           </Switch>
         <Footer/>
       </Router>
