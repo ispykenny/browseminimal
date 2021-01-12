@@ -29,8 +29,14 @@ const Article = (props) => {
 
   let options = {
     renderNode: {
-      'embedded-asset-block': (node) =>
-        `<img class="img-fluid" src="${currentArticle.target.fields.file.url}"/>`
+      [BLOCKS.EMBEDDED_ASSET]: (node) => {
+        return (
+          <div>
+            <img src={`http:${node.data.target.fields.file.url}`} />
+            {console.log('weee', node, 'weee')}
+          </div>
+        )
+      }
     }
   }
 
@@ -63,12 +69,7 @@ const Article = (props) => {
           <p className="date-posted">Posted on: {cleanDate(currentArticle.sys.createdAt)}</p>
           <h1>{currentArticle.fields.title}</h1>
           {console.log(currentArticle.fields.article)}
-          {documentToReactComponents(currentArticle.fields.article, {
-            
-              'embedded-asset-block': (node) =>
-                `<img class="img-fluid" src="${currentArticle.target.fields.file.url}"/>`
-          
-          })}
+          {documentToReactComponents(currentArticle.fields.article, options)}
         </div>
       )
     }

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Inner from '../Components/Inner';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ const Blogs = ({setArticles, articles, mounted}) => {
     if(mounted) {
       return (
         articles.data.items.map((article , index) => (
-          <div className="article__item">
+          <div className="article__item" key={index}>
             <Link to={`articles/${createSlug(article.fields.title)}`} key={index}>
               <img src={article.fields.featuredImage.fields.file.url} alt={`preview of ${article.fields.title}`}/>
               <p className="date-posted">Posted on: {cleanDate(article.sys.createdAt)}</p>

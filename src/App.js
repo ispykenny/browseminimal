@@ -39,7 +39,7 @@ function App() {
               <Home/>
             </Route>
             <Route exact path="/articles/" render={(props) => <Blogs setArticles={setArticles} articles={articles} mounted={mounted}/>}/>
-            <Route path="/articles/:slug" render={(props) => <Article article={props} read={articles}/>}/>
+            <Route path="/articles/:slug" render={(props) => <Article article={props} read={articles} mounted={mounted}/>}/>
           </Switch>
         <Footer/>
       </Router>
