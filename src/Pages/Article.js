@@ -10,7 +10,7 @@ const Article = (props) => {
   const [currentArticle, setCurrentArticle] = useState();
   
   useEffect(() => {
-    window.scrollTo(0, 1000);
+    window.scrollTo(0,0);
     if(typeof props.read === "object") {
       let count = 0;
       props.read.data.items.forEach((article) => {
@@ -63,11 +63,9 @@ const Article = (props) => {
               <meta name="description" content={currentArticle.fields.seoMeta} />
             </Helmet>
           </HelmetProvider>
-
           <img src={currentArticle.fields.featuredImage.fields.file.url} alt={`preview of ${currentArticle.fields.title}`}/>
           <p className="date-posted">Posted on: {cleanDate(currentArticle.sys.createdAt)}</p>
           <h1>{currentArticle.fields.title}</h1>
-          {console.log(currentArticle.fields.article)}
           {documentToReactComponents(currentArticle.fields.article, options)}
         </div>
       )
@@ -81,7 +79,6 @@ const Article = (props) => {
     <div>
       <Inner className="inner-most"> 
         <Article hasArticles={hasArticles}/>
-        {console.log(hasArticles)}
       </Inner>
     </div>
   )

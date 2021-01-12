@@ -35,9 +35,63 @@ header {
   cursor: pointer;
   -webkit-appearance: none;
 }
+.menu-trigger__span {
+  position: relative;
+  width: 100%;
+  display: block;
+  height: 100%;
 
+  span {
+    transition: all 200ms ease;
+    height: 2px;
+    left: 5%;
+    width: 90%;
+    background: white;
+    position: absolute;
+
+    &:first-of-type {
+      top: 8px;
+    }
+
+    &:nth-child(2) {
+      top: 14px;
+    }
+
+    &:nth-child(3) {
+      top: 20px;
+    }
+  }
+}
+
+
+.nav-showing {
+  .main-nav-parent {
+    display: block;
+  }
+  .menu-trigger__span {
+  
+    span {
+  
+      &:first-of-type {
+        top: 8px;
+        transform: translateY(6px) rotate(45deg);
+      }
+  
+      &:nth-child(2) {
+        top: 14px;
+        display: none;
+      }
+  
+      &:nth-child(3) {
+        top: 20px;
+        transform: translateY(-6px) rotate(-45deg);
+      }
+    }
+  }
+  
+}
 .main-nav-parent {
-  // display: none;
+  display: none;
   padding: 1em 0em;
 
   ul {
