@@ -34,7 +34,7 @@ const Article = (props) => {
       [BLOCKS.EMBEDDED_ASSET]: (node) => {
         return (
           <div>
-            <img src={`http:${node.data.target.fields.file.url}`} alt='Preview of the product' />
+            <img src={`https:${node.data.target.fields.file.url}`} alt='Preview of the product' />
           </div>
         )
       }
@@ -70,7 +70,9 @@ const Article = (props) => {
           <img src={currentArticle.fields.featuredImage.fields.file.url} alt={`preview of ${currentArticle.fields.title}`}/>
           <p className="date-posted">Posted on: {cleanDate(currentArticle.sys.createdAt)}</p>
           <h1>{currentArticle.fields.title}</h1>
-          {documentToReactComponents(currentArticle.fields.article, options)}
+          <div className="article-item-el">
+            {documentToReactComponents(currentArticle.fields.article, options)}
+          </div>
         </div>
       )
     }
