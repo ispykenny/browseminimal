@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Inner from '../Components/Inner';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
@@ -20,6 +20,8 @@ const Article = (props) => {
         }
         if(count >= 1) {
           setHasArticles(true)
+          const links = document.querySelectorAll('.article a');
+          links.forEach((link) => link.setAttribute('target', '_blank'))
         } else {
           setHasArticles(false)
         }
@@ -53,6 +55,8 @@ const Article = (props) => {
         </div>
       )
     } else if(hasArticles === true) {
+      const links = document.querySelectorAll('.article a');
+      links.forEach((link) => link.setAttribute('target', '_blank'))
       return (
         <div className="article">
           <HelmetProvider>
